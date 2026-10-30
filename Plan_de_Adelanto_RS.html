@@ -1,0 +1,1791 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Plan de Acción — Adelanto Rover Scout (RS) | Clan Akhénaton</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --crimson: #B91C3B;
+      --crimson-dark: #8F122B;
+      --crimson-vivid: #DC143C;
+      --crimson-soft: #FFF1F4;
+      --crimson-border: #F8CBD4;
+      --crimson-muted: #FCE4E9;
+
+      --bg: #F8F9FA;
+      --surface: #FFFFFF;
+      --surface-alt: #F3F4F6;
+      --border: #E5E7EB;
+      --text-main: #18181B;
+      --text-secondary: #52525B;
+      --text-muted: #71717A;
+
+      --status-done-bg: #ECFDF5;
+      --status-done-text: #065F46;
+      --status-done-border: #A7F3D0;
+
+      --status-progress-bg: #FFF1F4;
+      --status-progress-text: #9F1239;
+      --status-progress-border: #FECDD3;
+
+      --radius-lg: 16px;
+      --radius-md: 12px;
+      --radius-sm: 8px;
+      --shadow-sm: 0 1px 3px rgba(24, 24, 27, 0.05);
+      --shadow-md: 0 6px 20px rgba(24, 24, 27, 0.06);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg);
+      color: var(--text-main);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      padding-bottom: 4rem;
+    }
+
+    /* Top Accent Banner */
+    .hero {
+      background: linear-gradient(135deg, var(--crimson-dark) 0%, var(--crimson) 60%, var(--crimson-vivid) 100%);
+      color: #FFFFFF;
+      padding: 3rem 1.5rem 2.5rem;
+      border-bottom: 4px solid #6D0B1F;
+    }
+
+    .container {
+      max-width: 1060px;
+      margin: 0 auto;
+    }
+
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: rgba(255, 255, 255, 0.16);
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      padding: 0.3rem 0.75rem;
+      border-radius: 999px;
+      margin-bottom: 1rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(1.75rem, 3.5vw, 2.4rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-subtitle {
+      font-size: 1rem;
+      color: rgba(255, 255, 255, 0.9);
+      max-width: 780px;
+      margin-bottom: 1.75rem;
+    }
+
+    /* Global Progress Bar inside Hero */
+    .global-progress-card {
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      border-radius: var(--radius-md);
+      padding: 1rem 1.25rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .progress-stats {
+      flex: 1 1 280px;
+    }
+
+    .progress-stats-header {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 0.45rem;
+    }
+
+    .progress-track {
+      width: 100%;
+      height: 10px;
+      background: rgba(255, 255, 255, 0.22);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: #FFFFFF;
+      border-radius: 999px;
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+
+    .hero-controls {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-ghost {
+      background: rgba(255, 255, 255, 0.15);
+      color: #FFFFFF;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      padding: 0.45rem 0.85rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: background 0.15s ease;
+      font-family: inherit;
+    }
+
+    .btn-ghost:hover {
+      background: rgba(255, 255, 255, 0.26);
+    }
+
+    /* Main Content Layout */
+    main.container {
+      padding: 2rem 1.5rem 0;
+      display: flex;
+      flex-direction: column;
+      gap: 2.25rem;
+    }
+
+    .section-header {
+      margin-bottom: 1rem;
+    }
+
+    .section-header h2 {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--text-main);
+      letter-spacing: -0.015em;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .section-header p {
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      margin-top: 0.25rem;
+    }
+
+    /* Meta & Objetivo Grid */
+    .strategic-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .card-crimson-accent {
+      border-top: 4px solid var(--crimson);
+    }
+
+    .card-label {
+      font-size: 0.74rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--crimson);
+      margin-bottom: 0.4rem;
+    }
+
+    .card h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 0.55rem;
+      color: var(--text-main);
+    }
+
+    .card p {
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+    }
+
+    /* Requirements Summary Cards */
+    .req-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 1rem;
+    }
+
+    .req-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 0.85rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .req-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+
+    .req-title {
+      font-weight: 700;
+      font-size: 0.98rem;
+      color: var(--text-main);
+    }
+
+    .req-desc {
+      font-size: 0.87rem;
+      color: var(--text-secondary);
+    }
+
+    .req-meta {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--crimson);
+      background: var(--crimson-soft);
+      padding: 0.4rem 0.65rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--crimson-border);
+    }
+
+    /* Status Badges */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.38rem;
+      font-size: 0.76rem;
+      font-weight: 700;
+      padding: 0.3rem 0.7rem;
+      border-radius: 999px;
+      white-space: nowrap;
+      border: 1px solid transparent;
+      user-select: none;
+    }
+
+    .badge-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    .badge.done {
+      background: var(--status-done-bg);
+      color: var(--status-done-text);
+      border-color: var(--status-done-border);
+    }
+
+    .badge.done .badge-dot {
+      background: #10B981;
+    }
+
+    .badge.in-progress {
+      background: var(--status-progress-bg);
+      color: var(--status-progress-text);
+      border-color: var(--status-progress-border);
+    }
+
+    .badge.in-progress .badge-dot {
+      background: var(--crimson-vivid);
+    }
+
+    .badge.milestone {
+      background: var(--surface-alt);
+      color: var(--text-secondary);
+      border-color: var(--border);
+    }
+
+    .badge.milestone .badge-dot {
+      background: #71717A;
+    }
+
+    .badge-interactive {
+      cursor: pointer;
+      transition: transform 0.1s ease, box-shadow 0.15s ease;
+    }
+
+    .badge-interactive:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 2px 6px rgba(185, 28, 59, 0.14);
+    }
+
+    /* Diagnostic Competencies Table / Grid */
+    .routes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(285px, 1fr));
+      gap: 1rem;
+    }
+
+    .route-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 1.15rem 1.25rem;
+    }
+
+    .route-box.highlight {
+      border: 2px solid var(--crimson);
+      background: linear-gradient(to bottom, var(--crimson-soft) 0%, #FFFFFF 38%);
+    }
+
+    .route-box-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.85rem;
+    }
+
+    .route-box-title {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: var(--text-main);
+    }
+
+    .comp-item {
+      margin-bottom: 0.65rem;
+    }
+
+    .comp-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .comp-label-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      margin-bottom: 0.25rem;
+    }
+
+    .comp-level-bars {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 4px;
+    }
+
+    .level-step {
+      height: 6px;
+      border-radius: 4px;
+      background: #E4E4E7;
+    }
+
+    .level-step.filled {
+      background: var(--crimson);
+    }
+
+    .level-step.filled-done {
+      background: #059669;
+    }
+
+    .level-step.target {
+      background: repeating-linear-gradient(
+        45deg,
+        var(--crimson-border),
+        var(--crimson-border) 3px,
+        var(--crimson-soft) 3px,
+        var(--crimson-soft) 6px
+      );
+      border: 1px solid var(--crimson);
+    }
+
+    /* Filter Bar */
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .filter-pills {
+      display: flex;
+      gap: 0.45rem;
+      flex-wrap: wrap;
+    }
+
+    .filter-pill {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text-secondary);
+      padding: 0.4rem 0.85rem;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+      transition: all 0.15s ease;
+    }
+
+    .filter-pill.active,
+    .filter-pill:hover {
+      background: var(--crimson);
+      color: #FFFFFF;
+      border-color: var(--crimson);
+    }
+
+    .hint-text {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    /* Action Cards */
+    .actions-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .action-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 5px solid var(--crimson);
+      border-radius: var(--radius-lg);
+      padding: 1.65rem;
+      box-shadow: var(--shadow-md);
+      transition: border-color 0.2s ease;
+    }
+
+    .action-card.is-completed {
+      border-left-color: #059669;
+    }
+
+    .action-header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1rem;
+      padding-bottom: 1.1rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 1.25rem;
+    }
+
+    .action-title-group {
+      flex: 1 1 460px;
+    }
+
+    .action-number {
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--crimson);
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+
+    .action-title {
+      font-size: 1.22rem;
+      font-weight: 800;
+      color: var(--text-main);
+      line-height: 1.3;
+    }
+
+    .action-meta-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 0.45rem;
+    }
+
+    .date-tag {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      background: var(--surface-alt);
+      padding: 0.28rem 0.65rem;
+      border-radius: 6px;
+    }
+
+    /* Action Details Grid */
+    .action-details-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.15rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .detail-block {
+      background: #FAFAFB;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 1rem 1.15rem;
+    }
+
+    .detail-block h4 {
+      font-size: 0.8rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--crimson);
+      margin-bottom: 0.45rem;
+    }
+
+    .detail-block p,
+    .detail-block ul {
+      font-size: 0.89rem;
+      color: var(--text-secondary);
+    }
+
+    .detail-block ul {
+      padding-left: 1.1rem;
+      margin-top: 0.4rem;
+    }
+
+    .detail-block li {
+      margin-bottom: 0.3rem;
+    }
+
+    /* Feature Pills for Action 2 Needs/Stack */
+    .needs-strip {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 0.75rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .need-box {
+      background: var(--crimson-soft);
+      border: 1px solid var(--crimson-border);
+      border-radius: var(--radius-sm);
+      padding: 0.75rem 0.9rem;
+      font-size: 0.83rem;
+      color: var(--text-main);
+    }
+
+    .need-box strong {
+      display: block;
+      color: var(--crimson-dark);
+      font-size: 0.79rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 0.2rem;
+    }
+
+    /* Tasks Checklist */
+    .tasks-container {
+      margin-bottom: 1.25rem;
+    }
+
+    .tasks-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.65rem;
+    }
+
+    .tasks-header h4 {
+      font-size: 0.88rem;
+      font-weight: 800;
+      color: var(--text-main);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .task-counter {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--crimson);
+    }
+
+    .task-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .task-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 0.7rem 0.9rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      background: var(--surface);
+      transition: background 0.15s ease, border-color 0.15s ease;
+    }
+
+    .task-item:hover {
+      border-color: var(--crimson-border);
+      background: #FFFBFC;
+    }
+
+    .task-item.checked {
+      background: #F9FAFB;
+      border-color: #E5E7EB;
+    }
+
+    .task-item input[type="checkbox"] {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 19px;
+      height: 19px;
+      min-width: 19px;
+      border: 2px solid #A1A1AA;
+      border-radius: 5px;
+      margin-top: 0.15rem;
+      cursor: pointer;
+      display: grid;
+      place-content: center;
+      transition: all 0.15s ease;
+      background: #FFFFFF;
+    }
+
+    .task-item input[type="checkbox"]:hover {
+      border-color: var(--crimson);
+    }
+
+    .task-item input[type="checkbox"]:checked {
+      background: var(--crimson);
+      border-color: var(--crimson);
+    }
+
+    .task-item input[type="checkbox"]:checked::before {
+      content: "";
+      width: 10px;
+      height: 6px;
+      border-left: 2px solid #FFFFFF;
+      border-bottom: 2px solid #FFFFFF;
+      transform: rotate(-45deg) translate(1px, -1px);
+    }
+
+    .task-label {
+      flex: 1;
+      font-size: 0.9rem;
+      color: var(--text-main);
+      cursor: pointer;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 0.5rem;
+    }
+
+    .task-item.checked .task-text {
+      text-decoration: line-through;
+      color: var(--text-muted);
+    }
+
+    .task-due {
+      font-size: 0.76rem;
+      font-weight: 600;
+      color: var(--crimson);
+      background: var(--crimson-soft);
+      padding: 0.15rem 0.5rem;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+
+    .task-item.checked .task-due {
+      color: var(--text-muted);
+      background: var(--surface-alt);
+    }
+
+    /* Competencies Contribution Footer inside Action */
+    .competencies-box {
+      background: var(--surface-alt);
+      border-radius: var(--radius-md);
+      padding: 0.95rem 1.15rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+    }
+
+    .competencies-title {
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-main);
+    }
+
+    .comp-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+    }
+
+    .comp-tag {
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 0.26rem 0.65rem;
+      border-radius: 6px;
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      color: var(--text-secondary);
+    }
+
+    .comp-tag.primary {
+      background: var(--crimson);
+      color: #FFFFFF;
+      border-color: var(--crimson);
+    }
+
+    .comp-tag.secondary {
+      background: var(--crimson-soft);
+      color: var(--crimson-dark);
+      border-color: var(--crimson-border);
+    }
+
+    /* Timeline Roadmap */
+    .timeline-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1rem;
+    }
+
+    .month-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 1.2rem;
+    }
+
+    .month-name {
+      font-size: 0.85rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--crimson);
+      padding-bottom: 0.5rem;
+      margin-bottom: 0.7rem;
+      border-bottom: 2px solid var(--crimson-muted);
+    }
+
+    .month-card ul {
+      padding-left: 1.1rem;
+      font-size: 0.86rem;
+      color: var(--text-secondary);
+    }
+
+    .month-card li {
+      margin-bottom: 0.4rem;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 3rem;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      padding: 0 1.5rem;
+    }
+
+    @media (max-width: 640px) {
+      .action-meta-right {
+        align-items: flex-start;
+      }
+      .hero {
+        padding: 2.25rem 1.15rem 2rem;
+      }
+      main.container {
+        padding: 1.5rem 1rem 0;
+      }
+      .action-card {
+        padding: 1.25rem;
+      }
+    }
+
+    @media print {
+      body {
+        background: #FFFFFF;
+        padding-bottom: 0;
+      }
+      .hero {
+        background: #FFFFFF !important;
+        color: var(--text-main) !important;
+        border-bottom: 3px solid var(--crimson);
+        padding: 1rem 0 1.25rem;
+      }
+      .hero-eyebrow {
+        color: var(--crimson);
+        border-color: var(--crimson);
+      }
+      .hero-subtitle {
+        color: var(--text-secondary);
+      }
+      .hero-controls,
+      .filter-bar {
+        display: none !important;
+      }
+      .global-progress-card {
+        border: 1px solid var(--border);
+        color: var(--text-main);
+      }
+      .progress-track {
+        background: var(--surface-alt);
+      }
+      .progress-fill {
+        background: var(--crimson);
+      }
+      .action-card,
+      .card,
+      .req-card,
+      .route-box {
+        break-inside: avoid;
+        box-shadow: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="hero">
+    <div class="container">
+      <span class="hero-eyebrow">⚜️ Clan Akhénaton · Plan de Adelanto · Isabel Higuita</span>
+      <h1>🎯 Plan de Acción — Adelanto Rover Scout (RS)</h1>
+      <p class="hero-subtitle">
+        Hoja de ruta enfocada en el cierre del año 2026 para alcanzar el adelanto de <strong>Rover Scout (RS)</strong> y obtener la <strong>Horquilla</strong> mediante la consolidación de la Ruta de <strong>Creatividad</strong> y la participación activa en el Club Rover <strong>A.R.D.I.O.</strong>
+      </p>
+
+      <div class="global-progress-card">
+        <div class="progress-stats">
+          <div class="progress-stats-header">
+            <span>Progreso general de tareas del Plan de Acción</span>
+            <span id="global-progress-text">0 / 0 tareas (0%)</span>
+          </div>
+          <div class="progress-track">
+            <div class="progress-fill" id="global-progress-bar"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- 1. META Y OBJETIVO GENERAL -->
+    <section aria-labelledby="sec-meta">
+      <div class="section-header">
+        <h2 id="sec-meta">🧭 Horizonte Estratégico</h2>
+      </div>
+
+      <div class="strategic-grid">
+        <article class="card card-crimson-accent">
+          <div class="card-label">Meta Principal · Cierre Diciembre 2026</div>
+          <h3>Obtener el Adelanto de Rover Scout (RS) y la Horquilla</h3>
+          <p>
+            Completar la totalidad de los requisitos del adelanto <strong>Rover Scout (RS)</strong> y la Horquilla antes de diciembre de 2026, aprovechando al límite el tiempo disponible en el Clan.
+          </p>
+        </article>
+
+        <article class="card card-crimson-accent">
+          <div class="card-label">Objetivo General</div>
+          <h3>Consolidar mi Segunda Ruta (Creatividad) y el Club Rover</h3>
+          <p>
+            Consolidar mi Segunda Ruta <strong>(Creatividad)</strong> al nivel máximo (5/5) con proyectos de impacto para el Clan Akhénaton, cumpliendo los requisitos del Club Rover <strong>A.R.D.I.O</strong> y las evaluaciones de Jefatura.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- 2. ESTADO DE REQUISITOS RS -->
+    <section aria-labelledby="sec-requisitos">
+      <div class="section-header">
+        <h2 id="sec-requisitos">📌 Estado de Requisitos para Ser RS</h2>
+      </div>
+
+      <div class="req-grid">
+        <div class="req-card">
+          <div>
+            <div class="req-top">
+              <span class="req-title">1A. Primera Ruta Completa: Carácter y Afectividad</span>
+              <span class="badge done"><span class="badge-dot"></span>Completado</span>
+            </div>
+          </div>
+          <div class="req-meta">Obtenida el 15 de agosto de 2026</div>
+        </div>
+
+        <div class="req-card">
+          <div>
+            <div class="req-top">
+              <span class="req-title">1B. Segunda Ruta Completa: Creatividad</span>
+              <span class="badge in-progress"><span class="badge-dot"></span>En curso</span>
+            </div>
+            <p class="req-desc" style="margin-top: 0.55rem;">
+              Ruta más cercana según autoevaluación. Enfoque en alcanzar el puntaje máximo mediante 5 frentes de acción.
+            </p>
+          </div>
+        </div>
+
+        <div class="req-card">
+          <div>
+            <div class="req-top">
+              <span class="req-title">2. Club Rover (Mínimo 3 meses): A.R.D.I.O.</span>
+              <span class="badge in-progress"><span class="badge-dot"></span>En curso</span>
+            </div>
+            <p class="req-desc" style="margin-top: 0.55rem;">
+              Participación activa en el único club del Clan, gestionando y co-organizando sesiones junto al coordinador.
+            </p>
+          </div>
+        </div>
+    </section>
+
+    <!-- 3. DIAGNÓSTICO DE AUTOEVALUACIÓN -->
+    <section aria-labelledby="sec-diagnostico">
+      <div class="section-header">
+        <h2 id="sec-diagnostico">📊 Punto de Partida según Autoevaluación</h2>
+      </div>
+
+      <div class="routes-grid">
+        <!-- Creatividad (Target) -->
+        <div class="route-box highlight">
+          <div class="route-box-header">
+            <span class="route-box-title">🎨 Ruta Creatividad (Objetivo)</span>
+            <span class="badge in-progress"><span class="badge-dot"></span>Meta 5/5</span>
+          </div>
+          <div class="comp-item">
+            <div class="comp-label-row"><span>Innovación</span><span>Nivel 5 / 5</span></div>
+            <div class="comp-level-bars">
+              <span class="level-step filled"></span><span class="level-step filled"></span><span class="level-step filled"></span><span class="level-step filled"></span><span class="level-step filled"></span>
+            </div>
+          </div>
+          <div class="comp-item">
+            <div class="comp-label-row"><span>Planeación</span><span>Nivel 4 → <strong>5</strong></span></div>
+            <div class="comp-level-bars">
+              <span class="level-step filled"></span><span class="level-step filled"></span><span class="level-step filled"></span><span class="level-step filled"></span><span class="level-step target" title="Brecha a cerrar: Realiza una prospectiva del proyecto"></span>
+            </div>
+          </div>
+          <div class="comp-item">
+            <div class="comp-label-row"><span>Iniciativa</span><span>Nivel 3 → <strong>5</strong></span></div>
+            <div class="comp-level-bars">
+              <span class="level-step filled"></span><span class="level-step filled"></span><span class="level-step filled"></span><span class="level-step target" title="Motiva la participación"></span><span class="level-step target" title="Es proactivo y genera espacios"></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Carácter y Afectividad -->
+        <div class="route-box">
+          <div class="route-box-header">
+            <span class="route-box-title">🦁 Carácter y Afectividad</span>
+            <span class="badge done"><span class="badge-dot"></span>Obtenida (15 ago)</span>
+          </div>
+          <div class="comp-item">
+            <div class="comp-label-row"><span>Ejemplo y Liderazgo</span><span>Completada</span></div>
+            <div class="comp-level-bars">
+              <span class="level-step filled-done"></span><span class="level-step filled-done"></span><span class="level-step filled-done"></span><span class="level-step filled-done"></span><span class="level-step filled-done"></span>
+            </div>
+          </div>
+          <div class="comp-item">
+            <div class="comp-label-row"><span>Emprendimiento</span><span>Completada</span></div>
+            <div class="comp-level-bars">
+              <span class="level-step filled-done"></span><span class="level-step filled-done"></span><span class="level-step filled-done"></span><span class="level-step filled-done"></span><span class="level-step filled-done"></span>
+            </div>
+          </div>
+          <div class="comp-item">
+            <div class="comp-label-row"><span>Toma de Decisiones</span><span>Completada</span></div>
+            <div class="comp-level-bars">
+              <span class="level-step filled-done"></span><span class="level-step filled-done"></span><span class="level-step filled-done"></span><span class="level-step filled-done"></span><span class="level-step filled-done"></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Corporalidad -->
+        <div class="route-box">
+          <div class="route-box-header">
+            <span class="route-box-title">🏃‍♀️ Corporalidad</span>
+            <span class="badge milestone">Aporte transversal</span>
+          </div>
+          <div class="comp-item">
+            <div class="comp-label-row"><span>Aire Libre</span><span>Nivel 2 / 5</span></div>
+            <div class="comp-level-bars">
+              <span class="level-step filled"></span><span class="level-step filled"></span><span class="level-step"></span><span class="level-step"></span><span class="level-step"></span>
+            </div>
+          </div>
+          <div class="comp-item">
+            <div class="comp-label-row"><span>Comunicación</span><span>Nivel 4 / 5</span></div>
+            <div class="comp-level-bars">
+              <span class="level-step filled"></span><span class="level-step filled"></span><span class="level-step filled"></span><span class="level-step filled"></span><span class="level-step"></span>
+            </div>
+          </div>
+          <div class="comp-item">
+            <div class="comp-label-row"><span>Autocontrol</span><span>Nivel 4 / 5</span></div>
+            <div class="comp-level-bars">
+              <span class="level-step filled"></span><span class="level-step filled"></span><span class="level-step filled"></span><span class="level-step filled"></span><span class="level-step"></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sociabilidad -->
+        <div class="route-box">
+          <div class="route-box-header">
+            <span class="route-box-title">🤝 Sociabilidad</span>
+            <span class="badge milestone">Aporte transversal</span>
+          </div>
+          <div class="comp-item">
+            <div class="comp-label-row"><span>Servicio</span><span>Nivel 3 / 5</span></div>
+            <div class="comp-level-bars">
+              <span class="level-step filled"></span><span class="level-step filled"></span><span class="level-step filled"></span><span class="level-step"></span><span class="level-step"></span>
+            </div>
+          </div>
+          <div class="comp-item">
+            <div class="comp-label-row"><span>Negociación</span><span>Nivel 3 / 5</span></div>
+            <div class="comp-level-bars">
+              <span class="level-step filled"></span><span class="level-step filled"></span><span class="level-step filled"></span><span class="level-step"></span><span class="level-step"></span>
+            </div>
+          </div>
+          <div class="comp-item">
+            <div class="comp-label-row"><span>Trabajo en Equipo</span><span>Nivel 2 / 5</span></div>
+            <div class="comp-level-bars">
+              <span class="level-step filled"></span><span class="level-step filled"></span><span class="level-step"></span><span class="level-step"></span><span class="level-step"></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Espiritualidad -->
+        <div class="route-box">
+          <div class="route-box-header">
+            <span class="route-box-title">🔥 Espiritualidad</span>
+            <span class="badge milestone">Aporte transversal</span>
+          </div>
+          <div class="comp-item">
+            <div class="comp-label-row"><span>Desarrollo de Principios</span><span>Nivel 3 / 5</span></div>
+            <div class="comp-level-bars">
+              <span class="level-step filled"></span><span class="level-step filled"></span><span class="level-step filled"></span><span class="level-step"></span><span class="level-step"></span>
+            </div>
+          </div>
+          <div class="comp-item">
+            <div class="comp-label-row"><span>Sentido de Pertenencia</span><span>Nivel 2 / 5</span></div>
+            <div class="comp-level-bars">
+              <span class="level-step filled"></span><span class="level-step filled"></span><span class="level-step"></span><span class="level-step"></span><span class="level-step"></span>
+            </div>
+          </div>
+          <div class="comp-item">
+            <div class="comp-label-row"><span>Conciencia Ecológica</span><span>Nivel 2 / 5</span></div>
+            <div class="comp-level-bars">
+              <span class="level-step filled"></span><span class="level-step filled"></span><span class="level-step"></span><span class="level-step"></span><span class="level-step"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. PLAN DE ACCIÓN DETALLADO -->
+    <section aria-labelledby="sec-acciones">
+      <div class="section-header">
+        <h2 id="sec-acciones">🚀 Acciones del Plan de Adelanto</h2>
+      </div>
+
+      <div class="filter-bar">
+        <div class="filter-pills">
+          <button type="button" class="filter-pill active" data-filter="all" onclick="filterActions('all', this)">Todas (7)</button>
+          <button type="button" class="filter-pill" data-filter="in-progress" onclick="filterActions('in-progress', this)">En curso</button>
+          <button type="button" class="filter-pill" data-filter="done" onclick="filterActions('done', this)">Completadas</button>
+        </div>
+      </div>
+
+      <div class="actions-stack">
+
+        <!-- ACCIÓN 1: HIMNO DEL CLAN -->
+        <article class="action-card" data-action-id="act-1">
+          <div class="action-header">
+            <div class="action-title-group">
+              <span class="action-number">Segunda Ruta (Creatividad) · Acción Principal 1</span>
+              <h3 class="action-title">🎵 Grabación y Producción Oficial del Himno del Clan Cantado por Rovers</h3>
+            </div>
+            <div class="action-meta-right">
+              <span class="badge in-progress badge-interactive" data-status-badge="act-1" onclick="toggleActionStatus('act-1')" title="Haz clic para cambiar estado">
+                <span class="badge-dot"></span><span class="badge-label">En curso</span>
+              </span>
+              <span class="date-tag">Fecha propuesta: Septiembre 2026</span>
+            </div>
+          </div>
+
+          <div class="action-details-grid">
+            <div class="detail-block">
+              <h4>¿Qué se va a hacer?</h4>
+              <p>
+                Grabar y producir por primera vez una versión oficial en audio y video del himno del Clan Akhénaton (adaptado sobre la melodía de "Dust in the Wind" de Kansas). Con el apoyo de un estudio profesional y rovers talentosos, grabaremos las voces y editaremos un video para redes que se estrenará en el Aniversario del Clan.
+              </p>
+            </div>
+            <div class="detail-block">
+              <h4>Objetivo de la Acción</h4>
+              <p>
+                Entregar al Clan Akhénaton un legado sonoro que fortalezca la identidad y la mística en ceremonias, BOIAS y encuentros conjuntos, movilizando los talentos artísticos y comunicativos de los rovers en una producción colaborativa de calidad profesional.
+              </p>
+            </div>
+          </div>
+
+          <div class="tasks-container">
+            <div class="tasks-header">
+              <h4>Tareas</h4>
+              <span class="task-counter" data-counter="act-1">0 / 6 completadas</span>
+            </div>
+            <ul class="task-list">
+              <li class="task-item">
+                <input type="checkbox" id="t-1-1" data-action="act-1" />
+                <label class="task-label" for="t-1-1">
+                  <span class="task-text">Gestionar el apoyo de mi padre (productor musical) para el uso de su estudio de grabación, la adaptación de la pista de <em>"Dust in the Wind"</em> a la estructura del himno y la producción/afinación vocal.</span>
+                </label>
+              </li>
+              <li class="task-item">
+                <input type="checkbox" id="t-1-2" data-action="act-1" />
+                <label class="task-label" for="t-1-2">
+                  <span class="task-text">Identificar a los rovers del clan con habilidades vocales, presentarles formalmente la propuesta y confirmar el grupo de voces participantes (incluida yo).</span>
+                </label>
+              </li>
+              <li class="task-item">
+                <input type="checkbox" id="t-1-3" data-action="act-1" />
+                <label class="task-label" for="t-1-3">
+                  <span class="task-text">Coordinar agendas entre los cantantes y el estudio para definir la fecha única de grabación.</span>
+                </label>
+              </li>
+              <li class="task-item">
+                <input type="checkbox" id="t-1-4" data-action="act-1" />
+                <label class="task-label" for="t-1-4">
+                  <span class="task-text">Realizar la sesión de grabación de voces en el estudio y hacer seguimiento a la edición, afinación y mezcla final del audio.</span>
+                </label>
+              </li>
+              <li class="task-item">
+                <input type="checkbox" id="t-1-5" data-action="act-1" />
+                <label class="task-label" for="t-1-5">
+                  <span class="task-text">Articular con Comunicaciones de la empresa administrativa la creación y edición del video conmemorativo del himno.</span>
+                </label>
+              </li>
+              <li class="task-item">
+                <input type="checkbox" id="t-1-6" data-action="act-1" />
+                <label class="task-label" for="t-1-6">
+                  <span class="task-text">Estrenar el himno en el Aniversario del Clan, publicarlo en las redes sociales oficiales y entregar los archivos maestros como legado permanente.</span>
+                </label>
+              </li>
+            </ul>
+          </div>
+
+          <div class="competencies-box">
+            <span class="competencies-title">Rutas y Competencias a las que Aporta</span>
+            <div class="comp-tags">
+              <span class="comp-tag primary">Creatividad · Iniciativa (3 → 5: genera espacios y motiva participación)</span>
+              <span class="comp-tag primary">Creatividad · Innovación (5: crea un recurso inédito en el grupo scout)</span>
+              <span class="comp-tag primary">Creatividad · Planeación (4 → 5: coordina recursos y proyecta legado)</span>
+              <span class="comp-tag secondary">Espiritualidad · Sentido de Pertenencia</span>
+              <span class="comp-tag secondary">Corporalidad · Comunicación</span>
+              <span class="comp-tag secondary">Sociabilidad · Trabajo en Equipo</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- ACCIÓN 2: PORTAL DIGITAL DE PROGRAMA -->
+        <article class="action-card" data-action-id="act-2">
+          <div class="action-header">
+            <div class="action-title-group">
+              <span class="action-number">Segunda Ruta (Creatividad) · Acción Principal 2</span>
+              <h3 class="action-title">💻 Portal Digital para la Dirección de Programa del Clan</h3>
+            </div>
+            <div class="action-meta-right">
+              <span class="badge in-progress badge-interactive" data-status-badge="act-2" onclick="toggleActionStatus('act-2')" title="Haz clic para cambiar estado">
+                <span class="badge-dot"></span><span class="badge-label">En curso</span>
+              </span>
+              <span class="date-tag">Fecha propuesta: Noviembre 2026</span>
+            </div>
+          </div>
+
+          <div class="needs-strip">
+            <div class="need-box">
+              <strong>Necesidad 1 · Acceso 24/7 sin dependencia</strong>
+              Elimina el cuello de botella donde rovers y jefes dependen del Director de Programa para crear enlaces, dar permisos o consultar los formatos semanales.
+            </div>
+            <div class="need-box">
+              <strong>Necesidad 2 · Cero tareas mecánicas</strong>
+              Automatiza la copia semanal de plantillas, renombrado, asignación de fechas, ubicación en carpetas y permisos para ~50 reuniones al año.
+            </div>
+            <div class="need-box">
+              <strong>Necesidad 3 · Evaluación ágil y con IA</strong>
+              Sustituye evaluaciones verbales nocturnas extensas y apuntes dispersos por un formulario digital (antes, durante y después) con resumen automático vía IA.
+            </div>
+          </div>
+
+          <div class="action-details-grid">
+            <div class="detail-block">
+              <h4>¿Qué se va a hacer?</h4>
+              <p>
+                Tras asumir la Dirección de Programa a inicio de año, desarrollaré una <strong>plataforma web</strong> 100% gratuita (Google Apps Script y GitHub Pages) con ingreso por correo y permisos por rol que incluirá:
+              </p>
+              <ul>
+                <li>Registro de reuniones, eventos y tipos de actividades (reunión, salida, campamento, etc.).</li>
+                <li>Vista general con datos y enlaces directos a formatos y actas.</li>
+                <li>Formulario de gestión de programas, generación de formato/acta en Drive y asignación de accesos automáticamente.</li>
+                <li>Formulario de evaluación por reunión con consolidado automático mediante inteligencia artificial.</li>
+                <li>Plantillas configurables, guías y documentación para el próximo Director.</li>
+              </ul>
+            </div>
+            <div class="detail-block">
+              <h4>Objetivo de la Acción</h4>
+              <p>
+                Modernizar, descentralizar y automatizar la gestión del programa anual del Clan Akhénaton mediante una herramienta tecnológica sin costo y adaptable en el tiempo, poniendo mi experiencia profesional en desarrollo de software al servicio de la empresa administrativa y dejándola documentada como legado del Clan.
+              </p>
+            </div>
+          </div>
+
+          <div class="tasks-container">
+            <div class="tasks-header">
+              <h4>Tareas</h4>
+              <span class="task-counter" data-counter="act-2">0 / 7 completadas</span>
+            </div>
+            <ul class="task-list">
+              <li class="task-item">
+                <input type="checkbox" id="t-2-1" data-action="act-2" checked />
+                <label class="task-label" for="t-2-1">
+                  <span class="task-text">Capacitarse desde cero en la Dirección de Programa, estructurando cronogramas, calendarios y distribución de carpetas del año e identificando oportunidades de mejora.</span>
+                </label>
+              </li>
+              <li class="task-item">
+                <input type="checkbox" id="t-2-2" data-action="act-2" />
+                <label class="task-label" for="t-2-2">
+                  <span class="task-text">Exponer la propuesta conceptual y visual de la plataforma durante la evaluación semestral de la empresa administrativa como abrebocas ante la empresa y el Clan.</span>
+                </label>
+              </li>
+              <li class="task-item">
+                <input type="checkbox" id="t-2-3" data-action="act-2" />
+                <label class="task-label" for="t-2-3">
+                  <span class="task-text">Desarrollar el backend gratuito en Google Apps Script: acceso por correo, roles (Rover, Jefe, Director), creación automática de formatos/actas, permisos, calendario y configuración anual.</span>
+                </label>
+              </li>
+              <li class="task-item">
+                <input type="checkbox" id="t-2-4" data-action="act-2" />
+                <label class="task-label" for="t-2-4">
+                  <span class="task-text">Desarrollar el frontend en GitHub Pages (listado anual/histórico, detalle de reunión, edición/cancelación, eventos especiales y tipos de reunión) junto al módulo de evaluación y resumen con IA.</span>
+                </label>
+              </li>
+              <li class="task-item">
+                <input type="checkbox" id="t-2-5" data-action="act-2" />
+                <label class="task-label" for="t-2-5">
+                  <span class="task-text">Presentar la plataforma funcional a la Jefatura del Clan para recibir retroalimentación y verificar el cumplimiento de la normativa del programa.</span>
+                </label>
+              </li>
+              <li class="task-item">
+                <input type="checkbox" id="t-2-6" data-action="act-2" />
+                <label class="task-label" for="t-2-6">
+                  <span class="task-text">Convocar un Consejo de Clan, sustentar las necesidades resueltas y demostrar la herramienta en vivo para someter a votación oficial su adopción.</span>
+                </label>
+              </li>
+              <li class="task-item">
+                <input type="checkbox" id="t-2-7" data-action="act-2" />
+                <label class="task-label" for="t-2-7">
+                  <span class="task-text">Entregar guías de uso, contactos de soporte y capacitar al próximo Director de Programa para su puesta en marcha (o entregar formalmente los recursos al Clan si decide reservarlos a futuro).</span>
+                </label>
+              </li>
+            </ul>
+          </div>
+
+          <div class="competencies-box">
+            <span class="competencies-title">Rutas y Competencias a las que Aporta</span>
+            <div class="comp-tags">
+              <span class="comp-tag primary">Creatividad · Innovación (5: automatización + IA aplicada a procesos del Clan)</span>
+              <span class="comp-tag primary">Creatividad · Planeación (4 → 5: prospectiva anual configurable y empalme)</span>
+              <span class="comp-tag primary">Creatividad · Iniciativa (3 → 5: autogestión técnica y propuesta de legado)</span>
+              <span class="comp-tag secondary">Carácter y Afectividad · Emprendimiento y Toma de Decisiones</span>
+              <span class="comp-tag secondary">Corporalidad · Comunicación</span>
+              <span class="comp-tag secondary">Sociabilidad · Servicio y Negociación</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- ACCIÓN 3: LOGÍSTICA DEL CIEN SONRISAS -->
+        <article class="action-card" data-action-id="act-3">
+          <div class="action-header">
+            <div class="action-title-group">
+              <span class="action-number">Segunda Ruta (Creatividad) · Acción Principal 3</span>
+              <h3 class="action-title">🎁 Liderazgo Logístico, Alianzas y Tesorería de "Cien Sonrisas"</h3>
+            </div>
+            <div class="action-meta-right">
+              <span class="badge in-progress badge-interactive" data-status-badge="act-3" onclick="toggleActionStatus('act-3')" title="Haz clic para cambiar estado">
+                <span class="badge-dot"></span><span class="badge-label">En curso</span>
+              </span>
+              <span class="date-tag">Fecha propuesta: Diciembre 2026</span>
+            </div>
+          </div>
+
+          <div class="action-details-grid">
+            <div class="detail-block">
+              <h4>¿Qué se va a hacer?</h4>
+              <p>
+                Integrar el equipo de tres encargadas del servicio navideño <strong>Cien Sonrisas</strong>, liderando la logística, las alianzas estratégicas y la tesorería. Me encargaré de articular los acuerdos con la entidad aliada, impulsar la recolección de donaciones y gestionar los recursos con total transparencia y trabajo en equipo.
+              </p>
+            </div>
+            <div class="detail-block">
+              <h4>Objetivo de la Acción</h4>
+              <p>
+                Garantizar un servicio navideño de alto impacto, con una logística ordenada y cuentas 100% transparentes, reconectando con los proyectos de servicio y compartiendo mi experiencia de liderazgo colaborativo con el equipo.
+              </p>
+            </div>
+          </div>
+
+          <div class="tasks-container">
+            <div class="tasks-header">
+              <h4>Tareas</h4>
+              <span class="task-counter" data-counter="act-3">0 / 6 completadas</span>
+            </div>
+            <ul class="task-list">
+              <li class="task-item">
+                <input type="checkbox" id="t-3-1" data-action="act-3" />
+                <label class="task-label" for="t-3-1">
+                  <span class="task-text">Ubicar la población vulnerable beneficiaria a través de redes de contacto y formalizar acuerdos de apoyo mutuo con la entidad encargada (convocatoria y lugar vs. ejecución del Clan).</span>
+                </label>
+              </li>
+              <li class="task-item">
+                <input type="checkbox" id="t-3-2" data-action="act-3" />
+                <label class="task-label" for="t-3-2">
+                  <span class="task-text">Construir junto a las otras dos encargadas el plan de acción operativo (transporte, alimentación, regalos, diseño del programa, metas de recaudo y distribución de roles).</span>
+                </label>
+              </li>
+              <li class="task-item">
+                <input type="checkbox" id="t-3-3" data-action="act-3" />
+                <label class="task-label" for="t-3-3">
+                  <span class="task-text">Impulsar al equipo y al Clan en la campaña de difusión y recolección de donaciones económicas y en especie.</span>
+                </label>
+              </li>
+              <li class="task-item">
+                <input type="checkbox" id="t-3-4" data-action="act-3" />
+                <label class="task-label" for="t-3-4">
+                  <span class="task-text">Administrar rigurosamente la tesorería y cartera de la actividad, manteniendo las cuentas cuadradas y al día en coordinación con el equipo y la entidad aliada.</span>
+                </label>
+              </li>
+              <li class="task-item">
+                <input type="checkbox" id="t-3-5" data-action="act-3" />
+                <label class="task-label" for="t-3-5">
+                  <span class="task-text">Liderar colaborativamente la ejecución logística y del programa de Cien Sonrisas en terreno junto a la comunidad beneficiaria.</span>
+                </label>
+              </li>
+              <li class="task-item">
+                <input type="checkbox" id="t-3-6" data-action="act-3" />
+                <label class="task-label" for="t-3-6">
+                  <span class="task-text">Elaborar y entregar al Clan el informe final consolidado con resultados logísticos y balance financiero transparente (lo recolectado vs. lo ejecutado).</span>
+                </label>
+              </li>
+            </ul>
+          </div>
+
+          <div class="competencies-box">
+            <span class="competencies-title">Rutas y Competencias a las que Aporta</span>
+            <div class="comp-tags">
+              <span class="comp-tag primary">Creatividad · Planeación (4 → 5: plan logístico integral, control financiero y cierre)</span>
+              <span class="comp-tag primary">Creatividad · Iniciativa (3 → 5: gestión proactiva de alianzas y movilización)</span>
+              <span class="comp-tag secondary">Sociabilidad · Servicio (3 → 5: lidera proyecto de impacto comunitario)</span>
+              <span class="comp-tag secondary">Sociabilidad · Negociación (3 → 5: acuerdos de beneficio mutuo con entidad)</span>
+              <span class="comp-tag secondary">Sociabilidad · Trabajo en Equipo (2 → 5: co-liderazgo entre las 3 encargadas)</span>
+              <span class="comp-tag secondary">Espiritualidad · Desarrollo de Principios</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- ACCIÓN 4: CAPACITACIÓN DE LA EMPRESA ADMINISTRATIVA -->
+        <article class="action-card" data-action-id="act-4">
+          <div class="action-header">
+            <div class="action-title-group">
+              <span class="action-number">Segunda Ruta (Creatividad) · Acción Principal 4</span>
+              <h3 class="action-title">📚 Iniciativa de Capacitación para la Empresa Administrativa</h3>
+            </div>
+            <div class="action-meta-right">
+              <span class="badge in-progress badge-interactive" data-status-badge="act-4" onclick="toggleActionStatus('act-4')" title="Haz clic para cambiar estado">
+                <span class="badge-dot"></span><span class="badge-label">En curso</span>
+              </span>
+              <span class="date-tag">Fecha propuesta: Noviembre 2026</span>
+            </div>
+          </div>
+
+          <div class="action-details-grid">
+            <div class="detail-block">
+              <h4>¿Qué se va a hacer?</h4>
+              <p>
+                Organizar una reunión de formación práctica para los rovers de la Empresa Administrativa enfocada en temas clave como contabilidad, presupuestos y liderazgo. El espacio se definirá mediante votación para elegir el tema prioritario, gestionando un capacitador invitado para su ejecución.
+              </p>
+            </div>
+            <div class="detail-block">
+              <h4>Objetivo de la Acción</h4>
+              <p>
+                Proveer herramientas prácticas y teóricas a la Empresa Administrativa en las habilidades que más necesita fortalecer, impulsando la cultura de autogestión del aprendizaje para potenciar el cumplimiento de los objetivos del Clan.
+              </p>
+            </div>
+          </div>
+
+          <div class="tasks-container">
+            <div class="tasks-header">
+              <h4>Tareas</h4>
+              <span class="task-counter" data-counter="act-4">0 / 5 completadas</span>
+            </div>
+            <ul class="task-list">
+              <li class="task-item">
+                <input type="checkbox" id="t-4-1" data-action="act-4" />
+                <label class="task-label" for="t-4-1">
+                  <span class="task-text">Presentar la iniciativa de formación ante la Empresa Administrativa, propiciando el interés y la participación de todos los cargos.</span>
+                </label>
+              </li>
+              <li class="task-item">
+                <input type="checkbox" id="t-4-2" data-action="act-4" />
+                <label class="task-label" for="t-4-2">
+                  <span class="task-text">Someter a votación entre los integrantes de la empresa el tema principal sobre el cual desean capacitarse.</span>
+                </label>
+              </li>
+              <li class="task-item">
+                <input type="checkbox" id="t-4-3" data-action="act-4" />
+                <label class="task-label" for="t-4-3">
+                  <span class="task-text">Buscar, contactar y confirmar a la persona idónea que dictará la capacitación en la temática seleccionada.</span>
+                </label>
+              </li>
+              <li class="task-item">
+                <input type="checkbox" id="t-4-4" data-action="act-4" />
+                <label class="task-label" for="t-4-4">
+                  <span class="task-text">Agendar la fecha, hora y espacio/modalidad de la sesión, asegurando convocatoria y materiales previos.</span>
+                </label>
+              </li>
+              <li class="task-item">
+                <input type="checkbox" id="t-4-5" data-action="act-4" />
+                <label class="task-label" for="t-4-5">
+                  <span class="task-text">Llevar a cabo la reunión de capacitación con la Empresa Administrativa y consolidar los aprendizajes clave para la gestión del Clan.</span>
+                </label>
+              </li>
+            </ul>
+          </div>
+
+          <div class="competencies-box">
+            <span class="competencies-title">Rutas y Competencias a las que Aporta</span>
+            <div class="comp-tags">
+              <span class="comp-tag primary">Creatividad · Iniciativa (3 → 5: es proactiva y genera espacios formativos)</span>
+              <span class="comp-tag primary">Creatividad · Planeación (4 → 5: diagnostica necesidades de rol y gestiona medios)</span>
+              <span class="comp-tag secondary">Sociabilidad · Trabajo en Equipo (2 → 4: impulsa participación y aprendizaje mutuo)</span>
+              <span class="comp-tag secondary">Corporalidad · Comunicación</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- ACCIÓN 5: ACCIONES MENORES -->
+        <article class="action-card" data-action-id="act-5">
+          <div class="action-header">
+            <div class="action-title-group">
+              <span class="action-number">Segunda Ruta (Creatividad) · Acción Complementaria 5</span>
+              <h3 class="action-title">🛠️ Acciones Menores de Apoyo Técnico, Presupuestal y Crecimiento Conjunto</h3>
+            </div>
+            <div class="action-meta-right">
+              <span class="badge in-progress badge-interactive" data-status-badge="act-5" onclick="toggleActionStatus('act-5')" title="Haz clic para cambiar estado">
+                <span class="badge-dot"></span><span class="badge-label">En curso</span>
+              </span>
+            </div>
+          </div>
+
+          <div class="action-details-grid">
+            <div class="detail-block">
+              <h4>¿Qué se va a hacer?</h4>
+              <p>
+                Realizar tres aportes prácticos al Clan: apoyar la ambientación técnica de la Casa Embrujada de Halloween, brindar soporte logístico y financiero a la DEA para el Aniversario y actividades económicas, y fomentar un crecimiento bidireccional compartiendo ideas y aprendizaje mutuo.
+              </p>
+            </div>
+            <div class="detail-block">
+              <h4>Objetivo de la Acción</h4>
+              <p>
+                Respaldar las operaciones inmediatas del Clan (actividades, aniversario y finanzas de la DEA) uniendo habilidades técnicas y manuales con una actitud de servicio cotidiano y aprendizaje compartido.
+              </p>
+            </div>
+          </div>
+
+          <div class="tasks-container">
+            <div class="tasks-header">
+              <h4>Tareas</h4>
+              <span class="task-counter" data-counter="act-5">0 / 4 completadas</span>
+            </div>
+            <ul class="task-list">
+              <li class="task-item">
+                <input type="checkbox" id="t-5-1" data-action="act-5" />
+                <label class="task-label" for="t-5-1">
+                  <span class="task-text">Apoyar con equipos propios y montaje técnico al equipo de decoración y ambientación de la Casa Embrujada en la reunión de grupo de Halloween.</span>
+                </label>
+              </li>
+              <li class="task-item">
+                <input type="checkbox" id="t-5-2" data-action="act-5" />
+                <label class="task-label" for="t-5-2">
+                  <span class="task-text">Apoyar a la DEA en la logística del Aniversario del Clan gestionando reservas de entradas, espacio y alimentación con el equipo directo de Comfama.</span>
+                </label>
+              </li>
+              <li class="task-item">
+                <input type="checkbox" id="t-5-3" data-action="act-5" />
+                <label class="task-label" for="t-5-3">
+                  <span class="task-text">Acompañar a la DEA en la construcción técnica de presupuestos y seguimiento de gastos del Aniversario y demás actividades económicas.</span>
+                </label>
+              </li>
+              <li class="task-item">
+                <input type="checkbox" id="t-5-4" data-action="act-5" />
+                <label class="task-label" for="t-5-4">
+                  <span class="task-text">Aportar activamente ideas, consejos técnicos y disposición de aprendizaje mutuo en los espacios de trabajo del Clan y la empresa administrativa.</span>
+                </label>
+              </li>
+            </ul>
+          </div>
+
+          <div class="competencies-box">
+            <span class="competencies-title">Rutas y Competencias a las que Aporta</span>
+            <div class="comp-tags">
+              <span class="comp-tag primary">Creatividad · Aplicación técnica/manual, Planeación e Iniciativa</span>
+              <span class="comp-tag secondary">Sociabilidad · Trabajo en Equipo (2 → 4: aprendizaje recíproco) y Negociación (Comfama)</span>
+              <span class="comp-tag secondary">Corporalidad · Aire Libre y Técnica</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- ACCIÓN 6: CLUB ROVER A.R.D.I.O -->
+        <article class="action-card" data-action-id="act-6">
+          <div class="action-header">
+            <div class="action-title-group">
+              <span class="action-number">Requisito RS #2 · Club Rover (Mínimo 3 Meses)</span>
+              <h3 class="action-title">🏕️ Participación Activa y Co-organización en el Club Rover A.R.D.I.O.</h3>
+            </div>
+            <div class="action-meta-right">
+              <span class="badge in-progress badge-interactive" data-status-badge="act-6" onclick="toggleActionStatus('act-6')" title="Haz clic para cambiar estado">
+                <span class="badge-dot"></span><span class="badge-label">En curso</span>
+              </span>
+              <span class="date-tag">Fecha propuesta: Noviembre 2026</span>
+            </div>
+          </div>
+
+          <div class="action-details-grid">
+            <div class="detail-block">
+              <h4>¿Qué se va a hacer?</h4>
+              <p>
+                Completar el requisito de 3 meses de vinculación activa en el Club Rover <strong>A.R.D.I.O</strong>. Tras haber participado en una primera sesión, asumiré un rol activo apoyando la propuesta, organización y ejecución de las actividades junto al organizador.
+              </p>
+            </div>
+            <div class="detail-block">
+              <h4>Objetivo de la Acción</h4>
+              <p>
+                Acreditar satisfactoriamente los tres meses de participación constante en un Club Rover exigidos para ser RS, pasando de un rol únicamente asistente a un rol co-organizador que revitalice la actividad del club A.R.D.I.O.
+              </p>
+            </div>
+          </div>
+
+          <div class="tasks-container">
+            <div class="tasks-header">
+              <h4>Tareas</h4>
+              <span class="task-counter" data-counter="act-6">0 / 4 completadas</span>
+            </div>
+            <ul class="task-list">
+              <li class="task-item">
+                <input type="checkbox" id="t-6-1" data-action="act-6" checked />
+                <label class="task-label" for="t-6-1">
+                  <span class="task-text">Participar en actividad inicial del Club A.R.D.I.O. y conversar con el organizador para impulsar nuevas actividades próximas.</span>
+                </label>
+              </li>
+              <li class="task-item">
+                <input type="checkbox" id="t-6-2" data-action="act-6" />
+                <label class="task-label" for="t-6-2">
+                  <span class="task-text">Acordar junto al organizador de A.R.D.I.O. las fechas y temáticas de las próximas actividades del club.</span>
+                </label>
+              </li>
+              <li class="task-item">
+                <input type="checkbox" id="t-6-3" data-action="act-6" />
+                <label class="task-label" for="t-6-3">
+                  <span class="task-text">Apoyar activamente en la logística, preparación y convocatoria de las sesiones programadas del club.</span>
+                </label>
+              </li>
+              <li class="task-item">
+                <input type="checkbox" id="t-6-4" data-action="act-6" />
+                <label class="task-label" for="t-6-4">
+                  <span class="task-text">Participar en las sesiones y presentar el soporte de continuidad de 3 meses del club ante la Jefatura del Clan.</span>
+                </label>
+              </li>
+            </ul>
+          </div>
+
+          <div class="competencies-box">
+            <span class="competencies-title">Requisito y Competencias Relacionadas</span>
+            <div class="comp-tags">
+              <span class="comp-tag primary">Requisito Directo RS · Club Rover por periodo ≥ 3 meses</span>
+              <span class="comp-tag secondary">Creatividad · Iniciativa (co-organización proactiva de espacios)</span>
+              <span class="comp-tag secondary">Espiritualidad · Sentido de Pertenencia</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    Plan de Acción · Adelanto Rover Scout (RS) · Clan Akhénaton · Isabel Higuita
+  </footer>
+
+  <script>
+    const STORAGE_KEY_TASKS = 'rs_plan_akhenaton_tasks_v1';
+    const STORAGE_KEY_STATUS = 'rs_plan_akhenaton_status_v1';
+
+    let manualStatusOverrides = {};
+
+    function loadSavedState() {
+      try {
+        const savedTasks = JSON.parse(localStorage.getItem(STORAGE_KEY_TASKS) || '{}');
+        const savedStatuses = JSON.parse(localStorage.getItem(STORAGE_KEY_STATUS) || '{}');
+        manualStatusOverrides = savedStatuses;
+
+        document.querySelectorAll('input[type="checkbox"][data-action]').forEach((checkbox) => {
+          if (Object.prototype.hasOwnProperty.call(savedTasks, checkbox.id)) {
+            checkbox.checked = Boolean(savedTasks[checkbox.id]);
+          }
+          syncTaskRowStyle(checkbox);
+        });
+      } catch (e) {
+        manualStatusOverrides = {};
+      }
+      refreshAllActions();
+    }
+
+    function saveTasksState() {
+      const state = {};
+      document.querySelectorAll('input[type="checkbox"][data-action]').forEach((checkbox) => {
+        state[checkbox.id] = checkbox.checked;
+      });
+      try {
+        localStorage.setItem(STORAGE_KEY_TASKS, JSON.stringify(state));
+      } catch (e) {}
+    }
+
+    function saveStatusOverrides() {
+      try {
+        localStorage.setItem(STORAGE_KEY_STATUS, JSON.stringify(manualStatusOverrides));
+      } catch (e) {}
+    }
+
+    function syncTaskRowStyle(checkbox) {
+      const item = checkbox.closest('.task-item');
+      if (!item) return;
+      item.classList.toggle('checked', checkbox.checked);
+    }
+
+    function setBadgeAppearance(actionId, isDone) {
+      const card = document.querySelector(`.action-card[data-action-id="${actionId}"]`);
+      const badge = document.querySelector(`[data-status-badge="${actionId}"]`);
+      if (!card || !badge) return;
+
+      badge.classList.toggle('done', isDone);
+      badge.classList.toggle('in-progress', !isDone);
+      const label = badge.querySelector('.badge-label');
+      if (label) {
+        label.textContent = isDone ? 'Completado' : 'En curso';
+      }
+      card.classList.toggle('is-completed', isDone);
+      card.dataset.status = isDone ? 'done' : 'in-progress';
+    }
+
+    function refreshAction(actionId) {
+      const checkboxes = Array.from(document.querySelectorAll(`input[type="checkbox"][data-action="${actionId}"]`));
+      const total = checkboxes.length;
+      const checkedCount = checkboxes.filter((cb) => cb.checked).length;
+
+      const counterEl = document.querySelector(`[data-counter="${actionId}"]`);
+      if (counterEl) {
+        counterEl.textContent = `${checkedCount} / ${total} completadas`;
+      }
+
+      let isDone = total > 0 && checkedCount === total;
+      if (Object.prototype.hasOwnProperty.call(manualStatusOverrides, actionId)) {
+        isDone = manualStatusOverrides[actionId] === 'done';
+      }
+
+      setBadgeAppearance(actionId, isDone);
+    }
+
+    function refreshGlobalProgress() {
+      const allCheckboxes = Array.from(document.querySelectorAll('input[type="checkbox"][data-action]'));
+      const total = allCheckboxes.length;
+      const done = allCheckboxes.filter((cb) => cb.checked).length;
+      const pct = total > 0 ? Math.round((done / total) * 100) : 0;
+
+      const textEl = document.getElementById('global-progress-text');
+      const barEl = document.getElementById('global-progress-bar');
+      if (textEl) textEl.textContent = `${done} / ${total} tareas (${pct}%)`;
+      if (barEl) barEl.style.width = `${pct}%`;
+    }
+
+    function refreshAllActions() {
+      const actionCards = document.querySelectorAll('.action-card[data-action-id]');
+      actionCards.forEach((card) => refreshAction(card.dataset.actionId));
+      refreshGlobalProgress();
+      applyActiveFilter();
+    }
+
+    function toggleActionStatus(actionId) {
+      const card = document.querySelector(`.action-card[data-action-id="${actionId}"]`);
+      if (!card) return;
+      const currentlyDone = card.dataset.status === 'done';
+      manualStatusOverrides[actionId] = currentlyDone ? 'in-progress' : 'done';
+      saveStatusOverrides();
+      refreshAction(actionId);
+      applyActiveFilter();
+    }
+
+    let currentFilter = 'all';
+
+    function filterActions(filter, btnEl) {
+      currentFilter = filter;
+      document.querySelectorAll('.filter-pill').forEach((btn) => btn.classList.remove('active'));
+      if (btnEl) btnEl.classList.add('active');
+      applyActiveFilter();
+    }
+
+    function applyActiveFilter() {
+      document.querySelectorAll('.action-card[data-action-id]').forEach((card) => {
+        if (currentFilter === 'all') {
+          card.style.display = '';
+        } else {
+          card.style.display = card.dataset.status === currentFilter ? '' : 'none';
+        }
+      });
+    }
+
+    function resetPlanState() {
+      try {
+        localStorage.removeItem(STORAGE_KEY_TASKS);
+        localStorage.removeItem(STORAGE_KEY_STATUS);
+      } catch (e) {}
+      manualStatusOverrides = {};
+      document.querySelectorAll('input[type="checkbox"][data-action]').forEach((cb) => {
+        cb.checked = cb.defaultChecked;
+        syncTaskRowStyle(cb);
+      });
+      refreshAllActions();
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('input[type="checkbox"][data-action]').forEach((checkbox) => {
+        checkbox.addEventListener('change', () => {
+          delete manualStatusOverrides[checkbox.dataset.action];
+          saveStatusOverrides();
+          syncTaskRowStyle(checkbox);
+          saveTasksState();
+          refreshAction(checkbox.dataset.action);
+          refreshGlobalProgress();
+          applyActiveFilter();
+        });
+      });
+      loadSavedState();
+    });
+  </script>
+</body>
+</html>
